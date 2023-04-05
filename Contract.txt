@@ -6,9 +6,10 @@
 2. Team Name
 	#TODO
 3. Communication Method
-	Primary: Discord
+	Primary Communication Tool
+		Discord
 	Reply window
-		#TODO
+		#TODO [within 24 hours mon/fri, if message sent friday, response should be by EOD Mon?]
 4. Team Policies
 	a. productivity and conflict resolution
 		#TODO
