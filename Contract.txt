@@ -1,0 +1,28 @@
+#TODO: convert to pdf before submittal
+
+1. Team:
+	Joshua Sears
+	Nicholas Critchfield
+2. Team Name
+	#TODO
+3. Communication Method
+	Primary: Discord
+	Reply window
+		#TODO
+4. Team Policies
+	a. productivity and conflict resolution
+		#TODO
+	b. project management
+		#TODO
+	c. action plan if a team member...
+		... is confused about what to do:
+			#TODO
+		... does not hear back from the other team member within the reply window:
+			#TODO
+		... falls behind on their work:
+			#TODO
+		... thinks they will fall behind because of an upcoming exigent circumstance:
+			#TODO
+		... fails to contribute sufficiently to an assignment:
+			#TODO
+	#TODO: additional policies as deemed necessary
