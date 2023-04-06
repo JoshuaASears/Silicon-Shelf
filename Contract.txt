@@ -9,21 +9,21 @@
 	Primary Communication Tool
 		Discord
 	Reply window
-		#TODO [within 24 hours mon/fri, if message sent friday, response should be by EOD Mon?]
+		#TODO [within 24 hours mon/fri, if message sent friday, response should be by EOD Mon?] [Sounds good to me]
 4. Team Policies
 	a. productivity and conflict resolution
-		#TODO
+		[at the start of each week when something is due, have a quick chat on who's handling what and expected completion times, as well as tracking/handling any blockers. if there's a disagreement, flip a coin or something I dunno]
 	b. project management
 		#TODO
 	c. action plan if a team member...
 		... is confused about what to do:
-			#TODO
+			[check with teammate for clarification, check course materials or other class resources if relevant]
 		... does not hear back from the other team member within the reply window:
-			#TODO
+			[follow-up again, then what? kinda depends on nature of question]
 		... falls behind on their work:
-			#TODO
+			[inform teammate that they're behind and provide new projected date of completion, reassign work if necessary]
 		... thinks they will fall behind because of an upcoming exigent circumstance:
-			#TODO
+			[inform teammate ASAP with new projected date of completion, reassign work if necessary]
 		... fails to contribute sufficiently to an assignment:
-			#TODO
+			[other teammate informs instructor, offending team member is banished to Siberia]
 	#TODO: additional policies as deemed necessary
