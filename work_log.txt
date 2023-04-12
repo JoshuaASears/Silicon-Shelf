@@ -1,6 +1,6 @@
 Week 1:
 	"Activity 3 - Form your Project Group"
-		Due Moonday, April 10, 2023
+		Due Monday, April 10, 2023
 		Deliverables: Group Contract Document (PDF)
 	
 	Subcomponents: 
@@ -11,6 +11,17 @@ Week 1:
 		- Final Review and Submittal (Nick coomplete by 4/7/23)
 		
 Week 2:
+	"Project Step 1 Draft (Group, on Ed Discussions)"
+		Due Monday, April 16, 2023
+		Deliberables: 1 PDF Document Posted to Ed and linked to canvas
+		
+	Subcomponents: 
+		- Overview: (Nick complete by 4/14... notify is done)
+		- Database Outline: (Joshua, Nick) add contributions from Tuesday to EOD Thursday
+		- ERD: (Joshua complete 4/14 after outline is finished... notify once the diagram is done)
+		- Review components: (Joshua, Nick by EOD 4/14)
+		- Convert to PDF, add to GIT, and submit: (Nick by EOD 4/16)
+
 Week 3:
 Week 4:
 Week 5:

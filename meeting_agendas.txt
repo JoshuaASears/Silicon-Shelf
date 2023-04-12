@@ -4,6 +4,6 @@ Week 2:
   Project Step 1 due April 17th
 
   To-Do:
-    - Choose project topic
-    - Decide on ERD tool
-    - Assign portions of database outline/ERD
+    - Choose project topic: book log
+    - Decide on ERD tool: lucid
+    - Assign portions of database outline/ERD: see work_log
