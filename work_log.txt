@@ -29,6 +29,12 @@ Week 3:
 		- 4/21: check for final peer reviews and integrate feedback (Nick EOD 4/21)
 		- Nick Submit on Canvas (4/21 EOD)
 Week 4:
+	All pieces will be pushed to Git by End of Day Monday 5/1/23
+    - Schema		(Joshua)
+    - Example data	(Joshua)
+    - DDL.sql file 	(Nick)
+	- Update PDF	(Nick)
+
 Week 5:
 Week 6:
 Week 7:
