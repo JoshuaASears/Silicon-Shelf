@@ -1,5 +1,14 @@
 Meeting Agendas
 
+Week 4:
+  Project Step 2 Draft due Thursday, May 4th
+  
+  To-Do:
+    - Schema
+    - Example data
+    - DDL.sql file
+
+
 Week 3:
   Meeting 2:
     Project Step 1 Final Version due Monday, April 24th
