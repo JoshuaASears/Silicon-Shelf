@@ -12,8 +12,8 @@ CREATE OR REPLACE TABLE ClubMembers (
     clubMemberID int NOT NULL AUTO_INCREMENT,
     readerID int NOT NULL,
     clubID int NOT NULL,
-    isCoordinator tinyint DEFAULT 0,
-    isActive tinyint DEFAULT 1,
+    isCoordinator boolean DEFAULT 0,
+    isActive boolean DEFAULT 1,
     PRIMARY KEY (clubMemberID),
     FOREIGN KEY (readerID) REFERENCES Readers (readerID),
     FOREIGN KEY (clubID) REFERENCES ReadingClubs(clubID)
@@ -49,7 +49,7 @@ CREATE OR REPLACE TABLE ReadingClubs(
 
 CREATE OR REPLACE TABLE ReadingStatus (
     statusID int NOT NULL AUTO_INCREMENT,
-    status varchar(50), NOT NULL,
+    status varchar(50) NOT NULL,
     PRIMARY KEY (statusID)
 );
 
