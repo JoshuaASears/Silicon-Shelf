@@ -12,8 +12,9 @@ SET AUTOCOMMIT = 0;
 
 /* CREATE TABLES */
 
+DROP TABLE IF EXISTS Books;
 
-CREATE OR REPLACE TABLE Books (
+CREATE TABLE Books (
     -- attributes
     bookID int NOT NULL AUTO_INCREMENT,
     title varchar(100) NOT NULL,
@@ -23,7 +24,9 @@ CREATE OR REPLACE TABLE Books (
     PRIMARY KEY (bookID)
 );
 
-CREATE OR REPLACE TABLE Readers (
+DROP TABLE IF EXISTS Readers;
+
+CREATE TABLE Readers (
     -- attributes
     readerID int NOT NULL AUTO_INCREMENT,
     name varchar(50) NOT NULL,
@@ -32,7 +35,9 @@ CREATE OR REPLACE TABLE Readers (
     PRIMARY KEY (readerID)
 );
 
-CREATE OR REPLACE TABLE ReadingClubs(
+DROP TABLE IF EXISTS ReadingClubs;
+
+CREATE TABLE ReadingClubs(
     -- attributes
     clubID int NOT NULL AUTO_INCREMENT,
     clubName varchar(50) NOT NULL,
@@ -40,7 +45,9 @@ CREATE OR REPLACE TABLE ReadingClubs(
     PRIMARY KEY (clubID)
 );
 
-CREATE OR REPLACE TABLE ReadingStatus (
+DROP TABLE IF EXISTS ReadingStatus;
+
+CREATE TABLE ReadingStatus (
     -- attributes
     statusID int NOT NULL AUTO_INCREMENT,
     status varchar(50) NOT NULL,
@@ -48,7 +55,9 @@ CREATE OR REPLACE TABLE ReadingStatus (
     PRIMARY KEY (statusID)
 );
 
-CREATE OR REPLACE TABLE ClubMembers (
+DROP TABLE IF EXISTS ClubMembers;
+
+CREATE TABLE ClubMembers (
     -- attributes
     clubMemberID int NOT NULL AUTO_INCREMENT,
     readerID int NOT NULL,
@@ -61,21 +70,22 @@ CREATE OR REPLACE TABLE ClubMembers (
     FOREIGN KEY (clubID) REFERENCES ReadingClubs(clubID)
 );
 
-CREATE OR REPLACE TABLE ReadingLogs (
+DROP TABLE IF EXISTS ReadingLogs;
+
+CREATE TABLE ReadingLogs (
     -- attributes
     logID int NOT NULL AUTO_INCREMENT,
     readerID int NOT NULL,
     bookID int NOT NULL,
-    statusID int NOT NULL,
-    dateStarted date,
-    dateCompleted date,
     readingClubID int DEFAULT NULL,
+    statusID int NOT NULL,
+    timeStamp DATETIME DEFAULT (CURRENT_TIMESTAMP),
     -- constraints
     PRIMARY KEY (logID),
     FOREIGN KEY (readerID) REFERENCES Readers (readerID),
     FOREIGN KEY (bookID) REFERENCES Books (bookID),
-    FOREIGN KEY (statusID) REFERENCES ReadingStatus (statusID),
-    FOREIGN KEY (readingClubID) REFERENCES ReadingClubs (clubID)
+    FOREIGN KEY (readingClubID) REFERENCES ReadingClubs (clubID),
+    FOREIGN KEY (statusID) REFERENCES ReadingStatus (statusID)
 );
 
 
@@ -188,45 +198,33 @@ INSERT INTO ClubMembers (
 INSERT INTO ReadingLogs (
     readerID,
     bookID,
-    statusID,
-    dateStarted,
-    dateCompleted,
-    readingClubID
+    readingClubID,
+    statusID
 ) VALUES (
     (SELECT readerID FROM Readers WHERE name = "Joseph McReading"),
     (SELECT bookID FROM Books WHERE title = "Gray's Anatomy"),
-    (SELECT statusID FROM ReadingStatus WHERE status = "Enqueued"),
-    NULL,
-    NULL,
-    (SELECT clubID FROM ReadingClubs WHERE clubName ="Tequila Mockingbird")
+    (SELECT clubID FROM ReadingClubs WHERE clubName ="Tequila Mockingbird"),
+    (SELECT statusID FROM ReadingStatus WHERE status = "Enqueued")
 ), (
     (SELECT readerID FROM Readers WHERE name = "Jeroshi Yoshi"),
     (SELECT bookID FROM Books WHERE title = "Leviathan Wakes"),
-    (SELECT statusID FROM ReadingStatus WHERE status = "Finished"),
-    NULL,
-    CURDATE(),
-    NULL
+    DEFAULT,
+    (SELECT statusID FROM ReadingStatus WHERE status = "Finished")
 ), (
     (SELECT readerID FROM Readers WHERE name = "Daniel Abraham"),
     (SELECT bookID FROM Books WHERE title = "Leviathan Wakes"),
-    (SELECT statusID FROM ReadingStatus WHERE status = "Reading"),
-    DATE_SUB(CURDATE(), INTERVAL 5 MONTH),
-    NULL,
-    (SELECT clubID FROM ReadingClubs WHERE clubName ="Nihilists Anonymous")
+    (SELECT clubID FROM ReadingClubs WHERE clubName ="Nihilists Anonymous"),
+    (SELECT statusID FROM ReadingStatus WHERE status = "Reading")
 ), (
     (SELECT readerID FROM Readers WHERE name = "Sarah Jessica Booker"),
     (SELECT bookID FROM Books WHERE title = "The Bell Jar"),
-    (SELECT statusID FROM ReadingStatus WHERE status = "Enqueued"),
-    NULL,
-    NULL,
-    NULL
+    DEFAULT,
+    (SELECT statusID FROM ReadingStatus WHERE status = "Enqueued")
 ), (
     (SELECT readerID FROM Readers WHERE name = "Ro Himbo"),
     (SELECT bookID FROM Books WHERE title = "Leviathan Wakes"),
-    (SELECT statusID FROM ReadingStatus WHERE status = "Reading"),
-    DATE_SUB(CURDATE(), INTERVAL 3 WEEK),
-    NULL,
-    (SELECT clubID FROM ReadingClubs WHERE clubName ="Nihilists Anonymous")
+    (SELECT clubID FROM ReadingClubs WHERE clubName ="Nihilists Anonymous"),
+    (SELECT statusID FROM ReadingStatus WHERE status = "Reading")
 );
 
 /* 
