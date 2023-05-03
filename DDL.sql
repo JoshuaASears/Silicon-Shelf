@@ -63,11 +63,10 @@ CREATE TABLE ClubMembers (
     readerID int NOT NULL,
     clubID int NOT NULL,
     isCoordinator boolean DEFAULT 0,
-    isActive boolean DEFAULT 1,
     -- constraints
     PRIMARY KEY (clubMemberID),
-    FOREIGN KEY (readerID) REFERENCES Readers (readerID),
-    FOREIGN KEY (clubID) REFERENCES ReadingClubs(clubID)
+    FOREIGN KEY (readerID) REFERENCES Readers (readerID) ON DELETE CASCADE,
+    FOREIGN KEY (clubID) REFERENCES ReadingClubs(clubID) ON DELETE CASCADE
 );
 
 DROP TABLE IF EXISTS ReadingLogs;
