@@ -164,32 +164,26 @@ INSERT INTO ReadingStatus (
 INSERT INTO ClubMembers (
     readerID,
     clubID,
-    isCoordinator,
-    isActive
+    isCoordinator
 ) VALUES (
     (SELECT readerID FROM Readers WHERE name = "Joseph McReading"),
     (SELECT clubID FROM ReadingClubs WHERE clubName = "Tequila Mockingbird"),
-    DEFAULT,
     DEFAULT
 ), (
     (SELECT readerID FROM Readers WHERE name = "Jeroshi Yoshi"),
     (SELECT clubID FROM ReadingClubs WHERE clubName = "Tequila Mockingbird"),
-    DEFAULT,
     DEFAULT
 ), (
     (SELECT readerID FROM Readers WHERE name = "Mr. Adultman"),
     (SELECT clubID FROM ReadingClubs WHERE clubName = "Tequila Mockingbird"),
-    DEFAULT,
     DEFAULT
 ), (
     (SELECT readerID FROM Readers WHERE name = "Daniel Abraham"),
     (SELECT clubID FROM ReadingClubs WHERE clubName = "Nihilists Anonymous"),
-    1,
-    DEFAULT
+    1
 ), (
     (SELECT readerID FROM Readers WHERE name = "Ro Himbo"),
     (SELECT clubID FROM ReadingClubs WHERE clubName = "Nihilists Anonymous"),
-    DEFAULT,
     DEFAULT
 );
 
