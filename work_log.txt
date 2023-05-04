@@ -36,6 +36,12 @@ Week 4:
 	- Update PDF	(Nick)
 
 Week 5:
+	The following should be started/mostly finished to go over trouble spots on Tuesday 5/9 @ noon
+	- URL to an index.html (Joshua)
+	- .SQL for data manipulation queries (Nick)
+	Feedback from Ed disc is due 5/8 EOD.
+	Thurs meeting 5/11 will go over integrating ed review, updating the PDF, and looking ahead to Step 3 final (due 5/8)
+	
 Week 6:
 Week 7:
 Week 8:
