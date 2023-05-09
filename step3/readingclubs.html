@@ -18,6 +18,11 @@
         </nav>
         <main>
             <section>
+                <p>Refresh page to retrieve latest data.</p>
+                <p>Click delete to remove record from database.</p>
+                <p>Use forms below to create new records or update existing by entity id.</p>
+            </section>
+            <section>
                 <table>
                     <thead>
                         <tr>
@@ -26,6 +31,7 @@
                         <tr>
                             <th>clubID</th>
                             <th>clubName</th>
+                            <th>delete</th>
                         </tr>
                     </thead>
                 </table>
@@ -35,8 +41,8 @@
                     <fieldset>
                         <legend>Create</legend>
                         <label for="create-ReadingClubs-clubName">
-                            Name
-                            <input id="create-ReadingClubs-clubName" type="text" placeholder="literally whatever">
+                            clubName
+                            <input id="create-ReadingClubs-clubName" type="text" placeholder="literally whatever" required>
                         </label>
                         <button>Add</button>
                     </fieldset>
@@ -47,13 +53,13 @@
                     <fieldset>
                         <legend>Update</legend>
                         <label for="update-ReadingClubs-clubID">
-                            Select id
-                            <select id="update-ReadingClubs-clubID">
+                            Select clubID
+                            <select id="update-ReadingClubs-clubID" required>
                             </select>
                         </label>
                         <label for="update-ReadingClubs-clubName">
-                            Name
-                            <input id="update-ReadingClubs-clubName" type="text" placeholder="literally whatever">
+                            clubName
+                            <input id="update-ReadingClubs-clubName" type="text" placeholder="literally whatever" required>
                         </label>
                         <button>Update</button>
                     </fieldset>

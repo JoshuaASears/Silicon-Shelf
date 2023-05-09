@@ -18,16 +18,21 @@
         </nav>
         <main>
             <section>
+                <p>Refresh page to retrieve latest data.</p>
+                <p>Click delete to remove record from database.</p>
+                <p>Use forms below to create new records or update existing by entity id.</p>
+            </section>
+            <section>
                 <table>
                     <thead>
                         <tr>
-                            <th colspan="3">ClubMembers in database</th>
+                            <th colspan="4">ClubMembers in database</th>
                         </tr>
                         <tr>
-                            <th>club-member-id</th>
-                            <th>reader-id</th>
-                            <th>club-id</th>
-                            <th>is-coordinator</th>
+                            <th>clubMemberID</th>
+                            <th>readerID</th>
+                            <th>clubID</th>
+                            <th>delete</th>
                         </tr>
                     </thead>
                 </table>
@@ -36,7 +41,16 @@
                 <form action="">
                     <fieldset>
                         <legend>Create</legend>
-
+                        <label for="create-ClubMembers-readerID">
+                            Select readerID
+                            <select id="create-ClubMembers-readerID" required>
+                            </select>
+                        </label>
+                        <label for="create-ClubMembers-clubID">
+                            Select clubID
+                            <select id="create-ClubMembers-clubID" required>
+                            </select>
+                        </label>
                         <button>Add</button>
                     </fieldset>
                 </form>
@@ -45,7 +59,21 @@
                 <form action="">
                     <fieldset>
                         <legend>Update</legend>
-
+                        <label for="update-ClubMembers-clubMemberID">
+                            Select clubMemberID
+                            <select id="update-ClubMembers-clubMemberID" required>
+                            </select>
+                        </label>
+                        <label for="update-ClubMembers-readerID">
+                            Select readerID
+                            <select id="update-ClubMembers-readerID" required>
+                            </select>
+                        </label>
+                        <label for="update-ClubMembers-clubID">
+                            Select clubID
+                            <select id="update-ClubMembers-clubID" required>
+                            </select>
+                        </label>
                         <button>Update</button>
                     </fieldset>
                 </form>

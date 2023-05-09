@@ -14,10 +14,6 @@ body {
     margin-right: auto;
     background-color: var(--custom-color-background);
 }
-.page {
-    height: 100%;
-    background-color: white;
-}
 header, nav, main {
     padding: 10px;
     background-color: white;
@@ -31,7 +27,24 @@ img {
 form fieldset {
     max-width: fit-content;
 }
+table, th, td {
+    border: 1px solid black;
+    text-align: left;
+}
 button, label {
     display: block;
     margin: 5px 0px;
+}
+
+.page {
+    height: 100%;
+    background-color: white;
+}
+.admin-section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.schema {
+    min-width: 100%;
 }

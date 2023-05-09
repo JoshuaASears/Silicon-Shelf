@@ -18,16 +18,22 @@
         </nav>
         <main>
             <section>
+                <p>Refresh page to retrieve latest data.</p>
+                <p>Click delete to remove record from database.</p>
+                <p>Use forms below to create new records or update existing by entity id.</p>
+            </section>
+            <section>
                 <table>
                     <thead>
                         <tr>
-                            <th colspan="3">Books in database</th>
+                            <th colspan="5">Books in database</th>
                         </tr>
                         <tr>
                             <th>bookID</th>
                             <th>title</th>
                             <th>author</th>
                             <th>year</th>
+                            <th>delete</th>
                         </tr>
                     </thead>
                 </table>
@@ -37,16 +43,16 @@
                     <fieldset>
                         <legend>Create</legend>
                         <label for="create-Books-title">
-                            Title
-                            <input id="create-Books-title" type="text" placeholder="Title">
+                            title
+                            <input id="create-Books-title" type="text" placeholder="Title" required>
                         </label>
                         <label for="create-Books-author">
-                            Author
-                            <input id="create-Books-author" type="text" placeholder="Last, First">
+                            author
+                            <input id="create-Books-author" type="text" placeholder="Last, First" required>
                         </label>
                         <label for="create-Books-year">
-                            Year
-                            <input id="create-Books-year" type="text" placeholder="ex: 1990 or 536 BCE">
+                            year
+                            <input id="create-Books-year" type="text" placeholder="ex: 1990 or 536 BCE" required>
                         </label>
                         <button>Add</button>
                     </fieldset>
@@ -57,20 +63,20 @@
                     <fieldset>
                         <legend>Update</legend>
                         <label for="update-Books-bookID">
-                            Select id
+                            Select bookID
                             <select id="update-Books-bookID">
                             </select>
                         </label>
                         <label for="update-Books-title">
-                            Title
+                            title
                             <input id="update-Books-title" type="text" placeholder="Title">
                         </label>
                         <label for="update-Books-author">
-                            Author
+                            author
                             <input id="update-Books-author" type="text" placeholder="Last, First">
                         </label>
                         <label for="update-Books-year">
-                            Year
+                            year
                             <input id="update-Books-year" type="text" placeholder="ex: 1990 or 536 BCE">
                         </label>
                         <button>Update</button>
