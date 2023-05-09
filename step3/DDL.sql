@@ -62,7 +62,6 @@ CREATE TABLE ClubMembers (
     clubMemberID int NOT NULL AUTO_INCREMENT,
     readerID int NOT NULL,
     clubID int NOT NULL,
-    isCoordinator boolean DEFAULT 0,
     -- constraints
     PRIMARY KEY (clubMemberID),
     FOREIGN KEY (readerID) REFERENCES Readers (readerID) ON DELETE CASCADE,
@@ -163,28 +162,25 @@ INSERT INTO ReadingStatus (
 /* populate ClubMembers*/
 INSERT INTO ClubMembers (
     readerID,
-    clubID,
-    isCoordinator
+    clubID
 ) VALUES (
     (SELECT readerID FROM Readers WHERE name = "Joseph McReading"),
-    (SELECT clubID FROM ReadingClubs WHERE clubName = "Tequila Mockingbird"),
-    DEFAULT
+    (SELECT clubID FROM ReadingClubs WHERE clubName = "Tequila Mockingbird")
 ), (
     (SELECT readerID FROM Readers WHERE name = "Jeroshi Yoshi"),
-    (SELECT clubID FROM ReadingClubs WHERE clubName = "Tequila Mockingbird"),
-    DEFAULT
+    (SELECT clubID FROM ReadingClubs WHERE clubName = "Tequila Mockingbird")
+), (
+    (SELECT readerID FROM Readers WHERE name = "Jeroshi Yoshi"),
+    (SELECT clubID FROM ReadingClubs WHERE clubName = "Nihilists Anonymous")
 ), (
     (SELECT readerID FROM Readers WHERE name = "Mr. Adultman"),
-    (SELECT clubID FROM ReadingClubs WHERE clubName = "Tequila Mockingbird"),
-    DEFAULT
+    (SELECT clubID FROM ReadingClubs WHERE clubName = "Tequila Mockingbird")
 ), (
     (SELECT readerID FROM Readers WHERE name = "Daniel Abraham"),
-    (SELECT clubID FROM ReadingClubs WHERE clubName = "Nihilists Anonymous"),
-    1
+    (SELECT clubID FROM ReadingClubs WHERE clubName = "Nihilists Anonymous")
 ), (
     (SELECT readerID FROM Readers WHERE name = "Ro Himbo"),
-    (SELECT clubID FROM ReadingClubs WHERE clubName = "Nihilists Anonymous"),
-    DEFAULT
+    (SELECT clubID FROM ReadingClubs WHERE clubName = "Nihilists Anonymous")
 );
 
 /* populate ReadingLogs */
@@ -225,18 +221,18 @@ INSERT INTO ReadingLogs (
     OPTIONAL: REMOVE COMMENTS BELOW
 */
 
--- \! echo "Sample data for Readers:";
--- SELECT * FROM Readers;
--- \! echo "Sample data for Books:";
--- SELECT * FROM Books;
--- \! echo "Sample data for ReadingClubs:";
--- SELECT * FROM ReadingClubs;
--- \! echo "Sample data for ReadingStatus:";
--- SELECT * FROM ReadingStatus;
--- \! echo "Sample data for ClubMembers:";
--- SELECT * FROM ClubMembers;
--- \! echo "Sample data for ReadingLogs:";
--- SELECT * FROM ReadingLogs;
+\! echo "Sample data for Readers:";
+SELECT * FROM Readers;
+\! echo "Sample data for Books:";
+SELECT * FROM Books;
+\! echo "Sample data for ReadingClubs:";
+SELECT * FROM ReadingClubs;
+\! echo "Sample data for ReadingStatus:";
+SELECT * FROM ReadingStatus;
+\! echo "Sample data for ClubMembers:";
+SELECT * FROM ClubMembers;
+\! echo "Sample data for ReadingLogs:";
+SELECT * FROM ReadingLogs;
 
 /* EXIT CONFIG */
 SET FOREIGN_KEY_CHECKS = 1;
