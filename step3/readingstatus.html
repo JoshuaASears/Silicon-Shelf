@@ -18,6 +18,11 @@
         </nav>
         <main>
             <section>
+                <p>Refresh page to retrieve latest data.</p>
+                <p>Click delete to remove record from database.</p>
+                <p>Use forms below to create new records or update existing by entity id.</p>
+            </section>
+            <section>
                 <table>
                     <thead>
                         <tr>
@@ -26,6 +31,7 @@
                         <tr>
                             <th>statusID</th>
                             <th>status</th>
+                            <th>delete</th>
                         </tr>
                     </thead>
                 </table>
@@ -35,8 +41,8 @@
                     <fieldset>
                         <legend>Create</legend>
                         <label for="create-ReadingStatus-status">
-                            Name
-                            <input id="create-ReadingStatus-status" type="text" placeholder="category">
+                            status
+                            <input id="create-ReadingStatus-status" type="text" placeholder="category" required>
                         </label>
                         <button>Add</button>
                     </fieldset>
@@ -47,13 +53,13 @@
                     <fieldset>
                         <legend>Update</legend>
                         <label for="update-ReadingStatus-statusID">
-                            Select id
-                            <select id="update-ReadingStatus-statusID">
+                            Select statusID
+                            <select id="update-ReadingStatus-statusID" required>
                             </select>
                         </label>
                         <label for="update-ReadingStatus-status">
-                            Status
-                            <input id="update-ReadingStatus-status" type="text" placeholder="category">
+                            status
+                            <input id="update-ReadingStatus-status" type="text" placeholder="category" required>
                         </label>
                         <button>Update</button>
                     </fieldset>

@@ -18,15 +18,21 @@
         </nav>
         <main>
             <section>
+                <p>Refresh page to retrieve latest data.</p>
+                <p>Click delete to remove record from database.</p>
+                <p>Use forms below to create new records or update existing by entity id.</p>
+            </section>
+            <section>
                 <table>
                     <thead>
                         <tr>
-                            <th colspan="3">Readers in database</th>
+                            <th colspan="4">Readers in database</th>
                         </tr>
                         <tr>
                             <th>id</th>
                             <th>name</th>
                             <th>email</th>
+                            <th>delete</th>
                         </tr>
                     </thead>
                 </table>
@@ -35,7 +41,26 @@
                 <form action="">
                     <fieldset>
                         <legend>Create</legend>
-
+                        <label for="create-ReadingLogs-readerID">
+                            Select readerID
+                            <select id="create-ReadingLogs-readerID">
+                            </select>
+                        </label>
+                        <label for="create-ReadingLogs-bookID">
+                            Select bookID
+                            <select id="create-ReadingLogs-bookID">
+                            </select>
+                        </label>
+                        <label for="create-ReadingLogs-readingClubID">
+                            Select readingClubID
+                            <select id="create-ReadingLogs-readingClubID" optional>
+                            </select>
+                        </label>
+                        <label for="create-ReadingLogs-statusID">
+                            Select statusID
+                            <select id="create-ReadingLogs-statusID">
+                            </select>
+                        </label>
                         <button>Add</button>
                     </fieldset>
                 </form>
@@ -44,7 +69,31 @@
                 <form action="">
                     <fieldset>
                         <legend>Update</legend>
-
+                        <label for="update-ReadingLogs-logID">
+                            Select logID
+                            <select id="update-ReadingLogs-logID" required>
+                            </select>
+                        </label>
+                        <label for="update-ReadingLogs-readerID">
+                            Select readerID
+                            <select id="update-ReadingLogs-readerID" required>
+                            </select>
+                        </label>
+                        <label for="update-ReadingLogs-bookID">
+                            Select bookID
+                            <select id="update-ReadingLogs-bookID" required>
+                            </select>
+                        </label>
+                        <label for="update-ReadingLogs-readingClubID">
+                            Select readingClubID
+                            <select id="update-ReadingLogs-readingClubID" optional>
+                            </select>
+                        </label>
+                        <label for="update-ReadingLogs-statusID">
+                            Select statusID
+                            <select id="update-ReadingLogs-statusID" required>
+                            </select>
+                        </label>
                         <button>Update</button>
                     </fieldset>
                 </form>
