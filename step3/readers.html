@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silicon Shelf: Manage Readers</title>
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+    <div class="page">
+        <header>
+            <h1>Silicon Shelf > Manage Database > Readers</h1>
+        </header>
+        <nav>
+            <a href="./index.html">Home</a>
+            <a href="./administrator.html">Manage Database</a>
+        </nav>
+        <main>
+            <section>
+                <table>
+                    <thead>
+                        <tr>
+                            <th colspan="3">Readers in database</th>
+                        </tr>
+                        <tr>
+                            <th>readerID</th>
+                            <th>name</th>
+                            <th>email</th>
+                        </tr>
+                    </thead>
+                </table>
+            </section>
+            <section>
+                <form action="">
+                    <fieldset>
+                        <legend>Create</legend>
+                        <label for="create-Readers-name">
+                            Name
+                            <input id="create-Readers-name" type="text" placeholder="First Last">
+                        </label>
+                        <label for="create-Readers-email">
+                            Email
+                            <input id="create-Readers-email" type="email" placeholder="example@domain.com">
+                        </label>
+                        <button>Add</button>
+                    </fieldset>
+                </form>
+            </section>
+            <section>
+                <form action="">
+                    <fieldset>
+                        <legend>Update</legend>
+                        <label for="update-Readers-readerID">
+                            Select id
+                            <select id="update-Readers-readerID">
+                            </select>
+                        </label>
+                        <label for="update-Readers-name">
+                            Name
+                            <input id="update-Readers-name" type="text" placeholder="First Last">
+                        </label>
+                        <label for="update-Readers-email">
+                            Email
+                            <input id="update-Readers-email" type="email" placeholder="example@domain.com">
+                        </label>
+                        <button>Update</button>
+                    </fieldset>
+                </form>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
