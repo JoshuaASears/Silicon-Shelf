@@ -18,6 +18,7 @@
         </nav>
         <main>
             <section>
+                <h2>Books</h2>
                 <p>Refresh page to retrieve latest data.</p>
                 <p>Click delete to remove record from database.</p>
                 <p>Use forms below to create new records or update existing by entity id.</p>
@@ -26,13 +27,14 @@
                 <table>
                     <thead>
                         <tr>
-                            <th colspan="5">Books in database</th>
+                            <th colspan="6">Books in database</th>
                         </tr>
                         <tr>
                             <th>bookID</th>
                             <th>title</th>
                             <th>author</th>
                             <th>year</th>
+                            <th>edit</th>
                             <th>delete</th>
                         </tr>
                     </thead>
@@ -62,11 +64,6 @@
                 <form action="">
                     <fieldset>
                         <legend>Update</legend>
-                        <label for="update-Books-bookID">
-                            Select bookID
-                            <select id="update-Books-bookID">
-                            </select>
-                        </label>
                         <label for="update-Books-title">
                             title
                             <input id="update-Books-title" type="text" placeholder="Title">

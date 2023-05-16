@@ -18,6 +18,7 @@
         </nav>
         <main>
             <section>
+                <h2>ReadingStatus</h2>
                 <p>Refresh page to retrieve latest data.</p>
                 <p>Click delete to remove record from database.</p>
                 <p>Use forms below to create new records or update existing by entity id.</p>
@@ -26,11 +27,12 @@
                 <table>
                     <thead>
                         <tr>
-                            <th colspan="3">ReadingStatus in database</th>
+                            <th colspan="4">ReadingStatus in database</th>
                         </tr>
                         <tr>
                             <th>statusID</th>
                             <th>status</th>
+                            <th>edit</th>
                             <th>delete</th>
                         </tr>
                     </thead>
@@ -52,11 +54,7 @@
                 <form action="">
                     <fieldset>
                         <legend>Update</legend>
-                        <label for="update-ReadingStatus-statusID">
-                            Select statusID
-                            <select id="update-ReadingStatus-statusID" required>
-                            </select>
-                        </label>
+
                         <label for="update-ReadingStatus-status">
                             status
                             <input id="update-ReadingStatus-status" type="text" placeholder="category" required>
