@@ -65,7 +65,7 @@ CREATE TABLE ClubMembers (
     -- constraints
     PRIMARY KEY (clubMemberID),
     FOREIGN KEY (readerID) REFERENCES Readers (readerID) ON DELETE CASCADE,
-    FOREIGN KEY (clubID) REFERENCES ReadingClubs(clubID) ON DELETE CASCADE
+    FOREIGN KEY (clubID) REFERENCES ReadingClubs(clubID) ON DELETE SET NULL
 );
 
 DROP TABLE IF EXISTS ReadingLogs;
