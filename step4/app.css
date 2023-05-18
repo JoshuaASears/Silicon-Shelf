@@ -1,0 +1,50 @@
+:root {
+    --custom-color-background: rgba(196, 196, 196, 0.8);
+}
+html, body {
+    margin: 0;
+    padding: 0;
+}
+body {
+    max-width: 1000px;
+    width: 90vw;
+    height: 100vh;
+    align-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: var(--custom-color-background);
+}
+header, nav, main {
+    padding: 10px;
+    background-color: white;
+}
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+form fieldset {
+    max-width: fit-content;
+}
+table, th, td {
+    border: 1px solid black;
+    text-align: left;
+}
+button, label {
+    display: block;
+    margin: 5px 0px;
+}
+
+.page {
+    height: 100%;
+    background-color: white;
+}
+.admin-section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.schema {
+    min-width: 100%;
+}

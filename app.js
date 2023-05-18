@@ -12,7 +12,7 @@ const PORT = 9036;
 
 // serve static homepage
 // note: modify step number (3>4>5>6) for each project phase
-app.use(express.static('step3'));
+app.use(express.static('step4'));
 
 /* LISTENER */
 app.listen(PORT, () => {

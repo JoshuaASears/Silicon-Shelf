@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silicon Shelf: Manage ClubMembers</title>
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+    <div class="page">
+        <header>
+            <h1>Silicon Shelf > Manage Database > ClubMembers</h1>
+        </header>
+        <nav>
+            <a href="./index.html">Home</a>
+            <a href="./administrator.html">Manage Database</a>
+        </nav>
+        <main>
+            <section>
+            <h2>ClubMembers</h2>
+                <p>Refresh page to retrieve latest data.</p>
+                <p>Click delete to remove record from database.</p>
+                <p>Use forms below to create new records or update existing by entity id.</p>
+            </section>
+            <section>
+                <table>
+                    <thead>
+                        <tr>
+                            <th colspan="4">ClubMembers in database</th>
+                        </tr>
+                        <tr>
+                            <th>clubMemberID</th>
+                            <th>readerID</th>
+                            <th>clubID</th>
+                            <th>delete</th>
+                        </tr>
+                    </thead>
+                </table>
+            </section>
+            <section>
+                <form action="">
+                    <fieldset>
+                        <legend>Create</legend>
+                        <label for="create-fk-Readers-name">
+                            Select name
+                            <select id="create-fk-Readers-name" required>
+                            </select>
+                        </label>
+                        <label for="create-fk-ReadingClubs-clubName">
+                            Select clubName
+                            <select id="create-fk-ReadingClubs-clubName" required>
+                            </select>
+                        </label>
+                        <button>Add</button>
+                    </fieldset>
+                </form>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
