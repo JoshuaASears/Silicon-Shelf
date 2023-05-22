@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Silicon Shelf: Manage Readers</title>
     <link rel="stylesheet" href="app.css">
+    <script src="readers-operations.js"></script>
 </head>
 <body>
     <div class="page">
@@ -24,19 +25,10 @@
                 <p>Use forms below to create new records or update existing by entity id.</p>
             </section>
             <section>
-                <table>
-                    <thead>
-                        <tr>
-                            <th colspan="5">Readers in database</th>
-                        </tr>
-                        <tr>
-                            <th>readerID</th>
-                            <th>name</th>
-                            <th>email</th>
-                            <th>edit</th>
-                            <th>delete</th>
-                        </tr>
-                    </thead>
+                <button id="retrieve-data">
+                    Retrieve Data
+                </button>
+                <table id="display-table">
                 </table>
             </section>
             <section>
