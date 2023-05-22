@@ -9,9 +9,14 @@ const PORT = 9036;
 
 app.use(express.static('public'));
 
-// app.use(express.urlencoded({
-//     extended: true
-// }));
+app.use(express.urlencoded({
+    extended: true
+}));
+
+/* LISTENER */
+app.listen(PORT, () => {
+    console.log(`Server is listening on ${PORT}.`)
+});
 
 // database
 const db = require('./database/db-connector');
@@ -19,10 +24,6 @@ const db = require('./database/db-connector');
 /* ***                       *** */
 /* *** DATA MODEL OPERATIONS *** */
 /* ***                       *** */
-        // fields.length = num of data columns
-        // fields[n].name = column header
-        // results.length = num of data rows
-
 
 /* operations for: Readers entity */
 // CREATE
@@ -42,8 +43,3 @@ app.get('/retrieve-readers', (req, res) => {
 /* operations for: ReadingLogs entity */
 /* operations for: ClubMembers entity */
 /* operations for: ReadingStatus entity */
-
-/* LISTENER */
-app.listen(PORT, () => {
-    console.log(`Server is listening on ${PORT}.`)
-});
