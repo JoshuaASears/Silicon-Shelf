@@ -8,10 +8,8 @@ function display_table (data) {
     let fields = data[1];
     let total_columns = fields.length + button_columns;
     
-    // append thead with tr & th(s)
-    let table = document.getElementById('display-table');
+    // add tr & th(s) to thead
     let thead = document.createElement('thead');
-    table.appendChild(thead);
     let tr = document.createElement('tr');
     thead.appendChild(tr);
     for (let column = 0; column < total_columns; column++) {
@@ -21,10 +19,9 @@ function display_table (data) {
             th.textContent = fields[column].name;
         };
     };
-
-    // append tbody with tr(s) and td(s)
+    
+    // add tr(s) and td(s) to tbody
     let tbody = document.createElement('tbody')
-    table.appendChild(tbody);
     for (let row = 0; row < num_rows; row++) {
         let tr = document.createElement('tr');
         tbody.appendChild(tr);
@@ -41,6 +38,10 @@ function display_table (data) {
             };
         };
     };
+    
+    // drop and replace table elements with new
+    let table = document.getElementById('display-table');
+    table.replaceChildren(thead, tbody);
 };
 
 // prevent default events
