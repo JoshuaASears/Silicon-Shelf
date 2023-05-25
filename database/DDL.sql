@@ -80,7 +80,7 @@ CREATE TABLE ReadingLogs (
     timeStamp DATETIME DEFAULT (CURRENT_TIMESTAMP),
     -- constraints
     PRIMARY KEY (logID),
-    FOREIGN KEY (readerID) REFERENCES Readers (readerID),
+    FOREIGN KEY (readerID) REFERENCES Readers (readerID) ON DELETE CASCADE,
     FOREIGN KEY (bookID) REFERENCES Books (bookID),
     FOREIGN KEY (readingClubID) REFERENCES ReadingClubs (clubID),
     FOREIGN KEY (statusID) REFERENCES ReadingStatus (statusID)
