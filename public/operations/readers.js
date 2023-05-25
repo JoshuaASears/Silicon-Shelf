@@ -1,6 +1,8 @@
 'use strict';
 
-/* DOM MANIPULATIONS */
+/* ***                   *** */
+/* *** DOM MANIPULATIONS *** */
+/* ***                   *** */
 
 // TABLE
 function display_table (data) {
@@ -39,11 +41,13 @@ function display_table (data) {
             } else if (column === total_columns - 2) {
                 td.textContent = 'edit';
             } else if (column === total_columns - 1) {
-		let deleteButton = document.createElement('button');
-		td.append(deleteButton);
-		deleteButton.textContent = 'Delete';
-		// let readerID = td.parentElement.getAttribute("data-value");
-		// deleteButton.addEventListener("click", deleteReader(readerID));
+                let deleteButton = document.createElement('button');
+                td.append(deleteButton);
+                deleteButton.textContent = 'Delete';
+                let dataID = td.parentElement.getAttribute("data-value");
+                deleteButton.addEventListener("click", function () {
+                    delete_data(dataID)
+                });
             };
         };
     };
@@ -53,11 +57,12 @@ function display_table (data) {
     table.replaceChildren(thead, tbody);
 };
 
-/* ROUTE CALLERS */
+/* ***               *** */
+/* *** ROUTE CALLERS *** */
+/* ***               *** */
 // CREATE
 async function add_data (event) {
     event.preventDefault();
-    console.log('we made it!');
     let inputName = document.getElementById("create-Readers-name");
     let inputEmail = document.getElementById("create-Readers-email");
 
@@ -70,26 +75,27 @@ async function add_data (event) {
     }
 
    var xhttp = new XMLHttpRequest();
-    xhttp.open("POST", "/add-reader", true);
+    xhttp.open("POST", "/add-readers", true);
     xhttp.setRequestHeader("Content-type", "application/json");
 
     xhttp.onreadystatechange = () => {
         if (xhttp.readyState == 4 && xhttp.status == 200) {
-        display_table(JSON.parse(xhttp.response));
-
-        inputName.value = '';
-        inputEmail.value = '';
-    }
-    else if (xhttp.readyState == 4 && xhttp.status != 200) {
-        console.log("There was an error with the input.")
-    }
+            retrieve_data();
+            inputName.value = '';
+            inputEmail.value = '';
+        } else if (xhttp.readyState == 4 && xhttp.status != 200) {
+            console.log("There was an error with the input.")
+        }
     }
     xhttp.send(JSON.stringify(data));
 };
 
-// Retrieve
+// RETRIEVE
 async function retrieve_data(event) {
-    event.preventDefault();
+    if (event) {
+        event.preventDefault();
+    }
+    
     const url = '/retrieve-readers';
     try{
         const response = await fetch(url);
@@ -101,12 +107,29 @@ async function retrieve_data(event) {
         console.error(error)
     };
 };
-
 // UPDATE
 
 // DELETE
-
-// EVENT LISTENERS
+function delete_data(dataID) {
+    let data = {
+	    id: dataID
+    };
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("DELETE", "/delete-readers", true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    
+    xhttp.onreadystatechange = () => {
+        if (xhttp.readyState == 4 && xhttp.status == 204) {
+            retrieve_data();
+	    } else if (xhttp.readyState == 4 && xhttp.status != 204) {
+	        console.log("There was an error with the input.");
+	    }
+    }
+    xhttp.send(JSON.stringify(data));
+}
+/* ***         *** */
+/* *** ON LOAD *** */
+/* ***         *** */
 document.addEventListener('DOMContentLoaded', () => {
     const retrieveData = document.getElementById('retrieve-data');
     retrieveData.addEventListener('click', retrieve_data);

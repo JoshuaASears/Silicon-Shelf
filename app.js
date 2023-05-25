@@ -28,18 +28,16 @@ const db = require('./database/db-connector');
 
 /* operations for: Readers entity */
 // CREATE
-app.post('/add-reader', (req, res) => {
+app.post('/add-readers', (req, res) => {
     let data = req.body;
     let sql = `INSERT INTO Readers (name, email) VALUES ('${data.name}', '${data.email}')`;
     db.pool.query(sql, (error, rows, field) => {
 	if (error) {
 	    console.log(error);
 	    res.sendStatus(400);
-	}
-	else {
-	    res.redirect('/retrieve-readers');
-	}
-    })
+	} else {
+	    res.sendStatus(200);
+	}});
 });
 // RETRIEVE
 app.get('/retrieve-readers', (req, res) => {
@@ -50,18 +48,20 @@ app.get('/retrieve-readers', (req, res) => {
     });
 });
 // UPDATE
-// DELETE
-app.delete('/delete-reader', function(req, res, next) {
-    let data = req.body;
-    let readerID = parseInt(data.id);
-    let sql = `DELETE FROM Readers WHERE readerID = ?`;
 
-    db.pool.query(sql, [readerID], function(error, rows, fields) {
-	if (error) {
-	    console.log(error);
-	    res.sendStatus(400);
-	}
-    })
+
+// DELETE
+app.delete('/delete-readers', function(req, res, next) {
+    let data = req.body;
+    let dataID = parseInt(data.id);
+    let sql = `DELETE FROM Readers WHERE readerID = ${dataID}`;
+    db.pool.query(sql, (error, rows, fields) => {
+	    if (error) {
+	        console.log(error);
+	        res.sendStatus(400);
+	    } else {
+            res.sendStatus(204);
+        }});
 });
 
 /* operations for: ReadingClubs entity */

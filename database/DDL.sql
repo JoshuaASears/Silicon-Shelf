@@ -221,18 +221,18 @@ INSERT INTO ReadingLogs (
     OPTIONAL: REMOVE COMMENTS BELOW
 */
 
-\! echo "Sample data for Readers:";
-SELECT * FROM Readers;
-\! echo "Sample data for Books:";
-SELECT * FROM Books;
-\! echo "Sample data for ReadingClubs:";
-SELECT * FROM ReadingClubs;
-\! echo "Sample data for ReadingStatus:";
-SELECT * FROM ReadingStatus;
-\! echo "Sample data for ClubMembers:";
-SELECT * FROM ClubMembers;
-\! echo "Sample data for ReadingLogs:";
-SELECT * FROM ReadingLogs;
+-- \! echo "Sample data for Readers:";
+-- SELECT * FROM Readers;
+-- \! echo "Sample data for Books:";
+-- SELECT * FROM Books;
+-- \! echo "Sample data for ReadingClubs:";
+-- SELECT * FROM ReadingClubs;
+-- \! echo "Sample data for ReadingStatus:";
+-- SELECT * FROM ReadingStatus;
+-- \! echo "Sample data for ClubMembers:";
+-- SELECT * FROM ClubMembers;
+-- \! echo "Sample data for ReadingLogs:";
+-- SELECT * FROM ReadingLogs;
 
 /* EXIT CONFIG */
 SET FOREIGN_KEY_CHECKS = 1;
