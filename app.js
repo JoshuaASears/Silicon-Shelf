@@ -49,7 +49,6 @@ app.get('/retrieve-readers', (req, res) => {
 });
 // UPDATE
 app.put('/update-readers', (req, res) => {
-    console.log(req.body);
     let data = req.body;
     let readerID = data.readerID;
     let name = data.name;
