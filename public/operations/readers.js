@@ -31,10 +31,17 @@ function display_table (data) {
             if (column < fields.length) {
                 let field = fields[column].name
                 td.textContent = rows[row][field]
+		if (column == 0) {
+		    td.parentElement.setAttribute("data-value", rows[row][field]);
+		    }
             } else if (column === total_columns - 2) {
                 td.textContent = 'edit';
             } else if (column === total_columns - 1) {
-                td.textContent = 'delete';
+		let deleteButton = document.createElement('button');
+		td.append(deleteButton);
+		deleteButton.textContent = 'Delete';
+		let readerID = td.parentElement.getAttribute("data-value");
+		deleteButton.addEventListener("click", deleteReader(readerID));
             };
         };
     };
