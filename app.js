@@ -37,12 +37,10 @@ app.post('/add-reader', (req, res) => {
 	    res.sendStatus(400);
 	}
 	else {
-	    res.redirect('/');
+	    res.redirect('/retrieve-readers');
 	}
     })
 });
-
-
 // RETRIEVE
 app.get('/retrieve-readers', (req, res) => {
     let sql = 'SELECT * FROM Readers;';

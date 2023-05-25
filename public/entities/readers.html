@@ -32,16 +32,16 @@
                 </table>
             </section>
             <section>
-                <form action="/add-reader" METHOD="POST" id="add-reader-form">
+                <form id="add-reader-form">
                     <fieldset>
                         <legend>Create</legend>
                         <label for="create-Readers-name">
                             name
-                            <input id="create-Readers-name" type="text" placeholder="First Last" required>
+                            <input id="create-Readers-name" type="text" value="" placeholder="First Last" required>
                         </label>
                         <label for="create-Readers-email">
                             email
-                            <input id="create-Readers-email" type="email" placeholder="example@domain.com" required>
+                            <input id="create-Readers-email" type="email" value="" placeholder="example@domain.com" required>
                         </label>
                         <input type="submit">
                     </fieldset>
@@ -65,7 +65,5 @@
             </section>
         </main>
     </div>
-    <script src="../operations/add_reader.js"></script>
-    <script src="../operations/delete_reader.js"></script>
 </body>
 </html>

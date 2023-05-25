@@ -1,6 +1,8 @@
 'use strict';
 
-// create table
+/* DOM MANIPULATIONS */
+
+// TABLE
 function display_table (data) {
     let button_columns = 2;
     let rows = data[0];
@@ -40,8 +42,8 @@ function display_table (data) {
 		let deleteButton = document.createElement('button');
 		td.append(deleteButton);
 		deleteButton.textContent = 'Delete';
-		let readerID = td.parentElement.getAttribute("data-value");
-		deleteButton.addEventListener("click", deleteReader(readerID));
+		// let readerID = td.parentElement.getAttribute("data-value");
+		// deleteButton.addEventListener("click", deleteReader(readerID));
             };
         };
     };
@@ -51,7 +53,41 @@ function display_table (data) {
     table.replaceChildren(thead, tbody);
 };
 
-// prevent default events
+/* ROUTE CALLERS */
+// CREATE
+async function add_data (event) {
+    event.preventDefault();
+    console.log('we made it!');
+    let inputName = document.getElementById("create-Readers-name");
+    let inputEmail = document.getElementById("create-Readers-email");
+
+    let nameValue = inputName.value;
+    let emailValue = inputEmail.value;
+
+    let data = {
+        name: nameValue,
+        email: emailValue
+    }
+
+   var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "/add-reader", true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+
+    xhttp.onreadystatechange = () => {
+        if (xhttp.readyState == 4 && xhttp.status == 200) {
+        display_table(JSON.parse(xhttp.response));
+
+        inputName.value = '';
+        inputEmail.value = '';
+    }
+    else if (xhttp.readyState == 4 && xhttp.status != 200) {
+        console.log("There was an error with the input.")
+    }
+    }
+    xhttp.send(JSON.stringify(data));
+};
+
+// Retrieve
 async function retrieve_data(event) {
     event.preventDefault();
     const url = '/retrieve-readers';
@@ -66,8 +102,15 @@ async function retrieve_data(event) {
     };
 };
 
-// event listeners on load
+// UPDATE
+
+// DELETE
+
+// EVENT LISTENERS
 document.addEventListener('DOMContentLoaded', () => {
     const retrieveData = document.getElementById('retrieve-data');
     retrieveData.addEventListener('click', retrieve_data);
+
+    const addData = document.getElementById('add-reader-form');
+    addData.addEventListener('submit', add_data);
 });

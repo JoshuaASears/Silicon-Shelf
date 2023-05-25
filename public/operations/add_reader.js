@@ -1,6 +1,6 @@
 let addReaderForm = document.getElementById('add-reader-form');
 
-addReaderForm.addEventListener("submit", function (e) {
+addReaderForm.addEventListener("add-reader-form", function (e) {
     e.preventDefault();
     
     let inputName = document.getElementById("create-Readers-name");
