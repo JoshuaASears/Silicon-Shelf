@@ -48,13 +48,26 @@ app.get('/retrieve-readers', (req, res) => {
     });
 });
 // UPDATE
-
-
+app.put('/update-readers', (req, res) => {
+    console.log(req.body);
+    let data = req.body;
+    let readerID = data.readerID;
+    let name = data.name;
+    let email = data.email;
+    let sql = `UPDATE Readers SET name = "${name}", email = "${email}" WHERE readerID = ${readerID};`
+    db.pool.query(sql, (error, rows, fields) => {
+	    if (error) {
+	        console.log(error);
+	        res.sendStatus(400);
+	    } else {
+            res.sendStatus(204);
+        }});
+});
 // DELETE
-app.delete('/delete-readers', function(req, res, next) {
+app.delete('/delete-readers', (req, res) => {
     let data = req.body;
     let dataID = parseInt(data.id);
-    let sql = `DELETE FROM Readers WHERE readerID = ${dataID}`;
+    let sql = `DELETE FROM Readers WHERE readerID = ${dataID};`;
     db.pool.query(sql, (error, rows, fields) => {
 	    if (error) {
 	        console.log(error);
