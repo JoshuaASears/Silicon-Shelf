@@ -46,5 +46,11 @@ Week 6:
 Week 7:
 Week 8:
 Week 9:
+Project Step 5 Draft due Thursday, June 1
+    - BOTH: review readers.js and app.js for agnostic improvements.
+		- post discoveries on Discord
+    - Nick: Apply CRUD operations to Books, ReadingClubs
+    - Joshua: Apply CRUD operations to ReadingStatus
+	- All above work is due 6/1 for Thur meeting/work session @12
 Week 10:
 Finals Week:
