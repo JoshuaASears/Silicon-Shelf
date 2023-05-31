@@ -77,7 +77,105 @@ app.delete('/delete-readers', (req, res) => {
 });
 
 /* operations for: ReadingClubs entity */
+// CREATE
+app.post('/add-readingclubs', (req, res) => {
+    let data = req.body;
+    let sql = `INSERT INTO ReadingClubs (clubName) VALUES ('${data.clubName}')`;
+    db.pool.query(sql, (error, rows, field) => {
+	if (error) {
+	    console.log(error);
+	    res.sendStatus(400);
+	} else {
+	    res.sendStatus(200);
+	}});
+});
+// RETRIEVE
+app.get('/retrieve-readingclubs', (req, res) => {
+    let sql = 'SELECT * FROM ReadingClubs;';
+    db.pool.query(sql, (error, rows, fields) => {
+        if (error) throw error;
+        res.send([rows, fields]);
+    });
+});
+// UPDATE
+app.put('/update-readingclubs', (req, res) => {
+    let data = req.body;
+    let clubID = data.clubID;
+    let clubName = data.clubName;
+    let sql = `UPDATE ReadingClubs SET clubName = "${clubName}" WHERE clubID = ${clubID};`
+    db.pool.query(sql, (error, rows, fields) => {
+	    if (error) {
+	        console.log(error);
+	        res.sendStatus(400);
+	    } else {
+            res.sendStatus(204);
+        }});
+});
+// DELETE
+app.delete('/delete-readingclubs', (req, res) => {
+    let data = req.body;
+    let dataID = parseInt(data.id);
+    let sql = `DELETE FROM ReadingClubs WHERE clubID = ${dataID};`;
+    db.pool.query(sql, (error, rows, fields) => {
+	    if (error) {
+	        console.log(error);
+	        res.sendStatus(400);
+	    } else {
+            res.sendStatus(204);
+        }});
+});
+
 /* operations for: Books entity */
+// CREATE
+app.post('/add-books', (req, res) => {
+    let data = req.body;
+    let sql = `INSERT INTO Books (title, author, year) VALUES ('${data.title}', '${data.author}', '${data.year}')`;
+    db.pool.query(sql, (error, rows, field) => {
+	if (error) {
+	    console.log(error);
+	    res.sendStatus(400);
+	} else {
+	    res.sendStatus(200);
+	}});
+});
+// RETRIEVE
+app.get('/retrieve-books', (req, res) => {
+    let sql = 'SELECT * FROM Books;';
+    db.pool.query(sql, (error, rows, fields) => {
+        if (error) throw error;
+        res.send([rows, fields]);
+    });
+});
+// UPDATE
+app.put('/update-books', (req, res) => {
+    let data = req.body;
+    let bookID = data.bookID;
+    let title = data.title;
+    let author = data.author;
+    let year = data.year;
+    let sql = `UPDATE Books SET title = "${title}", author = "${author}", year="${year}" WHERE bookID = ${bookID};`
+    db.pool.query(sql, (error, rows, fields) => {
+	    if (error) {
+	        console.log(error);
+	        res.sendStatus(400);
+	    } else {
+            res.sendStatus(204);
+        }});
+});
+// DELETE
+app.delete('/delete-books', (req, res) => {
+    let data = req.body;
+    let dataID = parseInt(data.id);
+    let sql = `DELETE FROM Books WHERE bookID = ${dataID};`;
+    db.pool.query(sql, (error, rows, fields) => {
+	    if (error) {
+	        console.log(error);
+	        res.sendStatus(400);
+	    } else {
+            res.sendStatus(204);
+        }});
+});
+
 /* operations for: ReadingLogs entity */
 /* operations for: ClubMembers entity */
 
