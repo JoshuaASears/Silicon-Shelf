@@ -80,4 +80,52 @@ app.delete('/delete-readers', (req, res) => {
 /* operations for: Books entity */
 /* operations for: ReadingLogs entity */
 /* operations for: ClubMembers entity */
+
 /* operations for: ReadingStatus entity */
+// CREATE
+app.post('/add-readingstatus', (req, res) => {
+    let data = req.body;
+    let sql = `INSERT INTO ReadingStatus (status) VALUES ('${data.status}')`;
+    db.pool.query(sql, (error, rows, field) => {
+	if (error) {
+	    console.log(error);
+	    res.sendStatus(400);
+	} else {
+	    res.sendStatus(200);
+	}});
+});
+// RETRIEVE
+app.get('/retrieve-readingstatus', (req, res) => {
+    let sql = 'SELECT * FROM ReadingStatus;';
+    db.pool.query(sql, (error, rows, fields) => {
+        if (error) throw error;
+        res.send([rows, fields]);
+    });
+});
+// UPDATE
+app.put('/update-readingstatus', (req, res) => {
+    let data = req.body;
+    let statusID = data.statusID;
+    let status = data.status;
+    let sql = `UPDATE ReadingStatus SET status = "${status}" WHERE statusID= ${statusID};`;
+    db.pool.query(sql, (error, rows, fields) => {
+	    if (error) {
+	        console.log(error);
+	        res.sendStatus(400);
+	    } else {
+            res.sendStatus(204);
+        }});
+});
+// DELETE
+app.delete('/delete-readingstatus', (req, res) => {
+    let data = req.body;
+    let dataID = parseInt(data.id);
+    let sql = `DELETE FROM ReadingStatus WHERE statusID = ${dataID};`;
+    db.pool.query(sql, (error, rows, fields) => {
+	    if (error) {
+	        console.log(error);
+	        res.sendStatus(400);
+	    } else {
+            res.sendStatus(204);
+        }});
+});

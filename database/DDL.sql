@@ -73,17 +73,17 @@ DROP TABLE IF EXISTS ReadingLogs;
 CREATE TABLE ReadingLogs (
     -- attributes
     logID int NOT NULL AUTO_INCREMENT,
-    readerID int NOT NULL,
-    bookID int NOT NULL,
+    readerID int,
+    bookID int,
     readingClubID int DEFAULT NULL,
-    statusID int NOT NULL,
+    statusID int,
     timeStamp DATETIME DEFAULT (CURRENT_TIMESTAMP),
     -- constraints
     PRIMARY KEY (logID),
-    FOREIGN KEY (readerID) REFERENCES Readers (readerID),
-    FOREIGN KEY (bookID) REFERENCES Books (bookID),
-    FOREIGN KEY (readingClubID) REFERENCES ReadingClubs (clubID),
-    FOREIGN KEY (statusID) REFERENCES ReadingStatus (statusID)
+    FOREIGN KEY (readerID) REFERENCES Readers (readerID) ON DELETE SET NULL,
+    FOREIGN KEY (bookID) REFERENCES Books (bookID) ON DELETE SET NULL,
+    FOREIGN KEY (readingClubID) REFERENCES ReadingClubs (clubID) ON DELETE SET NULL,
+    FOREIGN KEY (statusID) REFERENCES ReadingStatus (statusID) ON DELETE SET NULL
 );
 
 

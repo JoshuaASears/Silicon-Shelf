@@ -68,23 +68,20 @@ function display_table (data) {
 // CREATE
 async function add_data (event) {
     event.preventDefault();
-    let inputName = document.getElementById("create-Readers-name");
-    let inputEmail = document.getElementById("create-Readers-email");
+    let inputStatus = document.getElementById("create-ReadingStatus-status");
 
     let data = {
-        name: inputName.value,
-        email: inputEmail.value
+        status: inputStatus.value
     }
 
    var xhttp = new XMLHttpRequest();
-    xhttp.open("POST", "/add-readers", true);
+    xhttp.open("POST", "/add-readingstatus", true);
     xhttp.setRequestHeader("Content-type", "application/json");
 
     xhttp.onreadystatechange = () => {
         if (xhttp.readyState == 4 && xhttp.status == 200) {
             retrieve_data();
-            inputName.value = '';
-            inputEmail.value = '';
+            inputStatus.value = '';
         } else if (xhttp.readyState == 4 && xhttp.status != 200) {
             console.log("There was an error with the input.")
         }
@@ -97,7 +94,7 @@ async function retrieve_data(event) {
     if (event) {
     event.preventDefault();
     };
-    const url = '/retrieve-readers';
+    const url = '/retrieve-readingstatus';
     try{
         const response = await fetch(url);
         const data = await response.json();
@@ -110,35 +107,30 @@ async function retrieve_data(event) {
 };
 // UPDATE
 function populate_update_form(row_object) {
-    let id_label = document.getElementById('update-Readers-readerID');
-    id_label.value = row_object.readerID;
-    let name_field = document.getElementById('update-Readers-name');
-    name_field.value = row_object.name;
-    let email_field = document.getElementById('update-Readers-email');
-    email_field.value = row_object.email;
+    let id_label = document.getElementById('update-ReadingStatus-statusID');
+    id_label.value = row_object.statusID;
+    let status_field = document.getElementById('update-ReadingStatus-status');
+    status_field.value = row_object.status;
 };
 function update_data(event) {
     event.preventDefault();
-    let inputID = document.getElementById("update-Readers-readerID");
-    let inputName = document.getElementById("update-Readers-name");
-    let inputEmail = document.getElementById("update-Readers-email");
+    let inputID = document.getElementById("update-ReadingStatus-statusID");
+    let inputStatus = document.getElementById("update-ReadingStatus-status");
 
     let data = {
-        readerID: inputID.value,
-        name: inputName.value,
-        email: inputEmail.value
+        statusID: inputID.value,
+        status: inputStatus.value
     }
 
    var xhttp = new XMLHttpRequest();
-    xhttp.open("PUT", "/update-readers", true);
+    xhttp.open("PUT", "/update-readingstatus", true);
     xhttp.setRequestHeader("Content-type", "application/json");
 
     xhttp.onreadystatechange = () => {
         if (xhttp.readyState == 4 && xhttp.status == 204) {
             retrieve_data();
             inputID.value = '';
-            inputName.value = '';
-            inputEmail.value = '';
+            inputStatus.value = '';
         } else if (xhttp.readyState == 4 && xhttp.status != 204) {
             console.log("There was an error with the input.")
         }
@@ -151,7 +143,7 @@ function delete_data(dataID) {
 	    id: dataID
     };
     var xhttp = new XMLHttpRequest();
-    xhttp.open("DELETE", "/delete-readers", true);
+    xhttp.open("DELETE", "/delete-readingstatus", true);
     xhttp.setRequestHeader("Content-type", "application/json");
     
     xhttp.onreadystatechange = () => {

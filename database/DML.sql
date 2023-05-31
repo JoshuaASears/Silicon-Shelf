@@ -76,7 +76,7 @@ DELETE FROM Books WHERE bookID=:bookID_selected_from_table;
 
 /* ReadingStatus */
 -- Display all reading statuses (Read)
-SELECT statusID, status FROM ReadingStatus;
+SELECT * FROM ReadingStatus;
 -- Add a status (Create)
 INSERT INTO ReadingStatus (status) VALUES (:status);
 -- Display status to be edited
