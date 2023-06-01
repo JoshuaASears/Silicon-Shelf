@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Silicon Shelf: Manage Books</title>
     <link rel="stylesheet" href="../app.css">
+    <script src="../operations/books.js"></script>
 </head>
 <body>
     <div class="page">
@@ -24,24 +25,14 @@
                 <p>Use forms below to create new records or update existing by entity id.</p>
             </section>
             <section>
-                <table>
-                    <thead>
-                        <tr>
-                            <th colspan="6">Books in database</th>
-                        </tr>
-                        <tr>
-                            <th>bookID</th>
-                            <th>title</th>
-                            <th>author</th>
-                            <th>year</th>
-                            <th>edit</th>
-                            <th>delete</th>
-                        </tr>
-                    </thead>
+                <button id="retrieve-data">
+                    Retrieve Data
+                </button>
+                <table id="display-table">
                 </table>
             </section>
             <section>
-                <form id="">
+                <form id="add-form">
                     <fieldset>
                         <legend>Create</legend>
                         <label for="create-Books-title">
@@ -56,14 +47,17 @@
                             year
                             <input id="create-Books-year" type="text" placeholder="ex: 1990 or 536 BCE" required>
                         </label>
-                        <button>Add</button>
+                        <input type="submit">
                     </fieldset>
                 </form>
             </section>
             <section>
-                <form id="">
+                <form id="update-form">
                     <fieldset>
                         <legend>Update</legend>
+                        <label for="update-Books-bookid"> bookID
+                            <input id="update-Books-bookID" value="" readonly>
+                        </label>
                         <label for="update-Books-title">
                             title
                             <input id="update-Books-title" type="text" placeholder="Title">

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Silicon Shelf: Manage ReadingClubs</title>
     <link rel="stylesheet" href="../app.css">
+    <script src="../operations/readingclubs.js"></script>
 </head>
 <body>
     <div class="page">
@@ -24,42 +25,38 @@
                 <p>Use forms below to create new records or update existing by entity id.</p>
             </section>
             <section>
-                <table>
-                    <thead>
-                        <tr>
-                            <th colspan="4">ReadingClubs in database</th>
-                        </tr>
-                        <tr>
-                            <th>clubID</th>
-                            <th>clubName</th>
-                            <th>edit</th>
-                            <th>delete</th>
-                        </tr>
-                    </thead>
+                <button id="retrieve-data">
+                    Retrieve Data
+                </button>
+                <table id="display-table">
                 </table>
             </section>
             <section>
-                <form id="">
+                <form id="add-form">
                     <fieldset>
                         <legend>Create</legend>
                         <label for="create-ReadingClubs-clubName">
                             clubName
                             <input id="create-ReadingClubs-clubName" type="text" placeholder="literally whatever" required>
                         </label>
-                        <button>Add</button>
+                        <input type="submit">
                     </fieldset>
                 </form>
             </section>
             <section>
-                <form id="">
+                <form id="update-form">
                     <fieldset>
                         <legend>Update</legend>
+                        <label for="update-ReadingClubs-clubID"> clubID
+                            <input id="update-ReadingClubs-clubID" value="" readonly>
+                            </input>
+                        </label>
                         </label>
                         <label for="update-ReadingClubs-clubName">
                             clubName
                             <input id="update-ReadingClubs-clubName" type="text" placeholder="literally whatever" required>
                         </label>
-                        <button>Update</button>
+                        <input type="submit">
                     </fieldset>
                 </form>
             </section>
