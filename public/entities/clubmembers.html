@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Silicon Shelf: Manage ClubMembers</title>
     <link rel="stylesheet" href="../app.css">
+    <script src="../operations/clubmembers.js"></script>
 </head>
 <body>
     <div class="page">
@@ -24,22 +25,11 @@
                 <p>Use forms below to create new records or update existing by entity id.</p>
             </section>
             <section>
-                <table>
-                    <thead>
-                        <tr>
-                            <th colspan="4">ClubMembers in database</th>
-                        </tr>
-                        <tr>
-                            <th>clubMemberID</th>
-                            <th>readerID</th>
-                            <th>clubID</th>
-                            <th>delete</th>
-                        </tr>
-                    </thead>
+                <table id="display-table">
                 </table>
             </section>
             <section>
-                <form id="">
+                <form id="add-form">
                     <fieldset>
                         <legend>Create</legend>
                         <label for="create-fk-Readers-name">
@@ -52,7 +42,7 @@
                             <select id="create-fk-ReadingClubs-clubName" required>
                             </select>
                         </label>
-                        <button>Add</button>
+                        <input type="submit">
                     </fieldset>
                 </form>
             </section>

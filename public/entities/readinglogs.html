@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Silicon Shelf: Manage ReadingLogs</title>
     <link rel="stylesheet" href="../app.css">
+    <script src="../operations/readinglogs.js"></script>
 </head>
 <body>
     <div class="page">
@@ -20,25 +21,14 @@
             <section>
                 <h2>ReadingLogs</h2>
                 <p>Refresh page to retrieve latest data.</p>
-                <p>Click delete to remove record from database.</p>
-                <p>Use forms below to create new records or update existing by entity id.</p>
+                <p>Use form below to create new records.</p>
             </section>
             <section>
-                <table>
-                    <thead>
-                        <tr>
-                            <th colspan="3">Readers in database</th>
-                        </tr>
-                        <tr>
-                            <th>id</th>
-                            <th>name</th>
-                            <th>email</th>
-                        </tr>
-                    </thead>
+                <table id="display-table">
                 </table>
             </section>
             <section>
-                <form id="">
+                <form id="add-form">
                     <fieldset>
                         <legend>Create</legend>
                         <label for="create-fk-Readers-name">
@@ -61,7 +51,7 @@
                             <select id="create-fk-ReadingStatus-status">
                             </select>
                         </label>
-                        <button>Add</button>
+                        <input type="submit">
                     </fieldset>
                 </form>
             </section>
