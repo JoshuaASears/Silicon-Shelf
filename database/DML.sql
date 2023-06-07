@@ -18,14 +18,14 @@ DELETE FROM Readers WHERE readerID=:readerID_selected_from_table;
 
 /* ClubMembers */
 -- Display all club member info (Read)
-SELECT clubMemberID, readers.name, readingclubs.clubName
+SELECT clubMemberID, Readers.name AS name, ReadingClubs.clubName as clubName
 FROM ClubMembers
-JOIN Readers ON clubmembers.readerID = readers.readerID
-JOIN ReadingClubs ON clubmembers.clubID = readingclubs.clubID;
+LEFT OUTER JOIN Readers ON ClubMembers.readerID = Readers.readerID
+LEFT OUTER JOIN ReadingClubs on ClubMembers.clubID = ReadingClubs.clubID;
 -- Display reader names for create selection
-SELECT name FROM Readers;
+SELECT readerID, name FROM Readers;
 -- Display club names for create selection
-SELECT clubName FROM ReadingClubs;
+SELECT clubID, clubName FROM ReadingClubs;
 -- Add a member to a club based on dropdown selections (Create)
 INSERT INTO ClubMembers (readerID, clubID) VALUES (SELECT readerID FROM Readers WHERE name=:name_from_dropdown, SELECT clubID FROM ReadingClubs WHERE clubName=:clubName_from_dropdown);
 -- Delete ClubMembers
@@ -45,17 +45,17 @@ DELETE FROM ReadingClubs WHERE clubID=:clubID_selected_from_table;
 
 /* ReadingLogs */
 -- Display all reading log info (Read)
-SELECT logID, readers.name, books.title, readingclubs.clubName, readingstatus.status
+SELECT logID, Readers.name AS name, Books.title AS title, ReadingClubs.clubName AS clubName, ReadingStatus.status AS status
 FROM ReadingLogs
-JOIN Readers ON readinglogs.readerID = readers.readerID
-JOIN Books ON readinglogs.bookID = books.bookID
-JOIN ReadingClubs ON readinglogs.readingclubID = readingclubs.clubID
-JOIN ReadingStatus ON readinglogs.statusID = readingstatus.statusID;
+LEFT OUTER JOIN Readers ON ReadingLogs.readerID = Readers.readerID
+LEFT OUTER JOIN Books ON ReadingLogs.bookID = Books.bookID
+LEFT OUTER JOIN ReadingClubs ON ReadingLogs.readingClubID = ReadingClubs.clubID
+LEFT OUTER JOIN ReadingStatus ON ReadingLogs.statusID = ReadingStatus.statusID;
 -- Select reader names, book titles, club names, statuses for dropdown
-SELECT name FROM Readers;
-SELECT title FROM Books;
-SELECT clubName FROM ReadingClubs;
-SELECt status FROM ReadingStatus;
+SELECT readerID, name FROM Readers;
+SELECT bookID, title FROM Books;
+SELECT clubID, clubName FROM ReadingClubs;
+SELECt statusID, status FROM ReadingStatus;
 -- Add item to reading log based on dropdown selections (Create)
 INSERT INTO ReadingLogs (readerID, bookID, readingClubID, statusID) VALUES (SELECT readerID FROM Readers WHERE name=:readername_from_dropdown, 
 SELECT bookID FROM Books WHERE title=:title_from_dropdown, 
