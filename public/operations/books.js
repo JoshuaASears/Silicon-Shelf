@@ -178,8 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const addData = document.getElementById('add-form');
     addData.addEventListener('submit', add_data);
     
-    const retrieveData = document.getElementById('retrieve-data');
-    retrieveData.addEventListener('click', retrieve_data);
+    retrieve_data();
     
     const updateData = document.getElementById('update-form');
     updateData.addEventListener('submit', update_data);

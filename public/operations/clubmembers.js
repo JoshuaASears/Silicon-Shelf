@@ -6,7 +6,7 @@
 
 // TABLE
 function display_table (data) {
-    let button_columns = 2;
+    let button_columns = 1;
     let rows = data[0];
     let num_rows = rows.length;
     let fields = data[1];
@@ -38,13 +38,6 @@ function display_table (data) {
 		if (column == 0) {
 		    td.parentElement.setAttribute("data-value", rows[row][field]);
 		    }
-            } else if (column === total_columns - 2) {
-                let button = document.createElement('button');
-                td.append(button);
-                button.textContent = 'Edit';
-                button.addEventListener("click", function () {
-                    populate_update_form(rows[row])
-                });
             } else if (column === total_columns - 1) {
                 let button = document.createElement('button');
                 td.append(button);
@@ -68,20 +61,21 @@ function display_table (data) {
 // CREATE
 async function add_data (event) {
     event.preventDefault();
-    let inputName = document.getElementById("create-ReadingClubs-clubName");
+    let inputNameID = document.getElementById("create-fk-Readers-name");
+    let inputClubNameID = document.getElementById("create-fk-ReadingClubs-clubName");
 
     let data = {
-        clubName: inputName.value
+        readerID: inputNameID.value,
+        readingClubID: inputClubNameID.value
     }
 
    var xhttp = new XMLHttpRequest();
-    xhttp.open("POST", "/add-readingclubs", true);
+    xhttp.open("POST", "/add-clubmembers", true);
     xhttp.setRequestHeader("Content-type", "application/json");
 
     xhttp.onreadystatechange = () => {
         if (xhttp.readyState == 4 && xhttp.status == 200) {
             retrieve_data();
-            inputName.value = '';
         } else if (xhttp.readyState == 4 && xhttp.status != 200) {
             console.log("There was an error with the input.")
         }
@@ -89,12 +83,60 @@ async function add_data (event) {
     xhttp.send(JSON.stringify(data));
 };
 
+async function populate_dropdown() {
+    const url = '/retrieve-readernames';
+    try{
+        const response = await fetch(url);
+        const data = await response.json();
+        if (response.status === 200) {
+            let name_field = document.getElementById('create-fk-Readers-name');
+            let rows = data[0];
+            let num_rows = rows.length;
+            let fields = data[1];
+            let field = fields[1].name;
+            for (let row = 0; row < num_rows; row++) {
+                let option = document.createElement("option");
+                let name = rows[row][field];
+                let id = fields[0].name;
+                option.value = rows[row][id];
+                option.textContent = name;
+                name_field.appendChild(option);
+            }
+        }
+    } catch (error) {
+        console.error(error)
+    };
+    
+    const url2 = '/retrieve-clubnames';
+    try{
+        const response = await fetch(url2);
+        const data = await response.json();
+        if (response.status === 200) {
+            let name_field = document.getElementById('create-fk-ReadingClubs-clubName');
+            let rows = data[0];
+            let num_rows = rows.length;
+            let fields = data[1];
+            let field = fields[1].name;
+            for (let row = 0; row < num_rows; row++) {
+                let option = document.createElement("option");
+                let name = rows[row][field];
+                let id = fields[0].name;
+                option.value = rows[row][id];
+                option.textContent = name;
+                name_field.appendChild(option);
+            }
+        }
+    } catch (error) {
+        console.error(error)
+    };
+}
+
 // RETRIEVE
 async function retrieve_data(event) {
     if (event) {
     event.preventDefault();
     };
-    const url = '/retrieve-readingclubs';
+    const url = '/retrieve-clubmembers';
     try{
         const response = await fetch(url);
         const data = await response.json();
@@ -105,45 +147,14 @@ async function retrieve_data(event) {
         console.error(error)
     };
 };
-// UPDATE
-function populate_update_form(row_object) {
-    let id_label = document.getElementById('update-ReadingClubs-clubID');
-    id_label.value = row_object.clubID;
-    let name_field = document.getElementById('update-ReadingClubs-clubName');
-    name_field.value = row_object.clubName;
-};
-function update_data(event) {
-    event.preventDefault();
-    let inputID = document.getElementById("update-ReadingClubs-clubID");
-    let inputName = document.getElementById("update-ReadingClubs-clubName");
 
-    let data = {
-        clubID: inputID.value,
-        clubName: inputName.value
-    }
-
-   var xhttp = new XMLHttpRequest();
-    xhttp.open("PUT", "/update-readingclubs", true);
-    xhttp.setRequestHeader("Content-type", "application/json");
-
-    xhttp.onreadystatechange = () => {
-        if (xhttp.readyState == 4 && xhttp.status == 204) {
-            retrieve_data();
-            inputID.value = ''
-            inputName.value = '';
-        } else if (xhttp.readyState == 4 && xhttp.status != 204) {
-            console.log("There was an error with the input.")
-        }
-    }
-    xhttp.send(JSON.stringify(data));
-};
 // DELETE
 function delete_data(dataID) {
     let data = {
 	    id: dataID
     };
     var xhttp = new XMLHttpRequest();
-    xhttp.open("DELETE", "/delete-readingclubs", true);
+    xhttp.open("DELETE", "/delete-clubmembers", true);
     xhttp.setRequestHeader("Content-type", "application/json");
     
     xhttp.onreadystatechange = () => {
@@ -161,9 +172,7 @@ function delete_data(dataID) {
 document.addEventListener('DOMContentLoaded', () => {
     const addData = document.getElementById('add-form');
     addData.addEventListener('submit', add_data);
-    
+
     retrieve_data();
-    
-    const updateData = document.getElementById('update-form');
-    updateData.addEventListener('submit', update_data);
+    populate_dropdown();
 });
