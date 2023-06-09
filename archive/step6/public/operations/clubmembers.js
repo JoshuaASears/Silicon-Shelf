@@ -6,10 +6,11 @@
 
 // TABLE
 function display_table (data) {
+    let button_columns = 1;
     let rows = data[0];
     let num_rows = rows.length;
     let fields = data[1];
-    let total_columns = fields.length;
+    let total_columns = fields.length + button_columns;
     
     // add tr & th(s) to thead
     let thead = document.createElement('thead');
@@ -37,7 +38,15 @@ function display_table (data) {
 		if (column == 0) {
 		    td.parentElement.setAttribute("data-value", rows[row][field]);
 		    }
-            }
+            } else if (column === total_columns - 1) {
+                let button = document.createElement('button');
+                td.append(button);
+                button.textContent = 'Delete';
+                let dataID = td.parentElement.getAttribute("data-value");
+                button.addEventListener("click", function () {
+                    delete_data(dataID)
+                });
+            };
         };
     };
     
@@ -53,19 +62,15 @@ function display_table (data) {
 async function add_data (event) {
     event.preventDefault();
     let inputNameID = document.getElementById("create-fk-Readers-name");
-    let inputTitleID = document.getElementById("create-fk-Books-title");
     let inputClubNameID = document.getElementById("create-fk-ReadingClubs-clubName");
-    let inputStatusID = document.getElementById("create-fk-ReadingStatus-status");
 
     let data = {
         readerID: inputNameID.value,
-        bookID: inputTitleID.value,
-        readingClubID: inputClubNameID.value,
-        statusID: inputStatusID.value
+        readingClubID: inputClubNameID.value
     }
 
-    var xhttp = new XMLHttpRequest();
-    xhttp.open("POST", "/add-readinglogs", true);
+   var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "/add-clubmembers", true);
     xhttp.setRequestHeader("Content-type", "application/json");
 
     xhttp.onreadystatechange = () => {
@@ -101,59 +106,13 @@ async function populate_dropdown() {
     } catch (error) {
         console.error(error)
     };
-
-    const url2 = '/retrieve-booktitles';
+    
+    const url2 = '/retrieve-clubnames';
     try{
         const response = await fetch(url2);
         const data = await response.json();
         if (response.status === 200) {
-            let name_field = document.getElementById('create-fk-Books-title');
-            let rows = data[0];
-            let num_rows = rows.length;
-            let fields = data[1];
-            let field = fields[1].name;
-            for (let row = 0; row < num_rows; row++) {
-                let option = document.createElement("option");
-                let name = rows[row][field];
-                let id = fields[0].name;
-                option.value = rows[row][id];
-                option.textContent = name;
-                name_field.appendChild(option);
-            }
-        }
-    } catch (error) {
-        console.error(error)
-    };
-    
-    const url3 = '/retrieve-clubnames';
-    try{
-        const response = await fetch(url3);
-        const data = await response.json();
-        if (response.status === 200) {
             let name_field = document.getElementById('create-fk-ReadingClubs-clubName');
-            let rows = data[0];
-            let num_rows = rows.length;
-            let fields = data[1];
-            let field = fields[1].name;
-            for (let row = 0; row < num_rows; row++) {
-                let option = document.createElement("option");
-                let name = rows[row][field];
-                let id = fields[0].name;
-                option.value = rows[row][id];
-                option.textContent = name;
-                name_field.appendChild(option);
-            }
-        }
-    } catch (error) {
-        console.error(error)
-    };
-
-    const url4 = '/retrieve-readingstatuses';
-    try{
-        const response = await fetch(url4);
-        const data = await response.json();
-        if (response.status === 200) {
-            let name_field = document.getElementById('create-fk-ReadingStatus-status');
             let rows = data[0];
             let num_rows = rows.length;
             let fields = data[1];
@@ -177,7 +136,7 @@ async function retrieve_data(event) {
     if (event) {
     event.preventDefault();
     };
-    const url = '/retrieve-readinglogs';
+    const url = '/retrieve-clubmembers';
     try{
         const response = await fetch(url);
         const data = await response.json();
@@ -189,13 +148,31 @@ async function retrieve_data(event) {
     };
 };
 
+// DELETE
+function delete_data(dataID) {
+    let data = {
+	    id: dataID
+    };
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("DELETE", "/delete-clubmembers", true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    
+    xhttp.onreadystatechange = () => {
+        if (xhttp.readyState == 4 && xhttp.status == 204) {
+            retrieve_data();
+	    } else if (xhttp.readyState == 4 && xhttp.status != 204) {
+	        console.log("There was an error with the input.");
+	    }
+    }
+    xhttp.send(JSON.stringify(data));
+}
 /* ***         *** */
 /* *** ON LOAD *** */
 /* ***         *** */
 document.addEventListener('DOMContentLoaded', () => {
     const addData = document.getElementById('add-form');
     addData.addEventListener('submit', add_data);
-    
-    populate_dropdown();
+
     retrieve_data();
+    populate_dropdown();
 });
