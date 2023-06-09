@@ -177,7 +177,106 @@ app.delete('/delete-books', (req, res) => {
 });
 
 /* operations for: ReadingLogs entity */
+// CREATE
+app.post('/add-readinglogs', (req, res) => {
+    let data = req.body;
+    let sql = `INSERT INTO ReadingLogs (readerID, bookID, readingClubID, statusID) VALUES ('${data.readerID}', '${data.bookID}', '${data.readingClubID}', '${data.statusID}')`;
+    db.pool.query(sql, (error, rows, field) => {
+	if (error) {
+	    console.log(error);
+	    res.sendStatus(400);
+	} else {
+	    res.sendStatus(200);
+	}});
+});
+
+app.get('/retrieve-readernames', (req, res) => {
+    let sql = 'SELECT readerID, name FROM Readers';
+    db.pool.query(sql, (error, rows, fields) => {
+        if (error) throw error;
+        res.send([rows, fields]);
+    });
+});
+
+app.get('/retrieve-booktitles', (req, res) => {
+    let sql = 'SELECT bookID, title FROM Books';
+    db.pool.query(sql, (error, rows, fields) => {
+        if (error) throw error;
+        res.send([rows, fields]);
+    });
+});
+
+app.get('/retrieve-clubnames', (req, res) => {
+    let sql = 'SELECT clubID, clubName FROM ReadingClubs';
+    db.pool.query(sql, (error, rows, fields) => {
+        if (error) throw error;
+        res.send([rows, fields]);
+    });
+});
+
+app.get('/retrieve-readingstatuses', (req, res) => {
+    let sql = 'SELECT statusID, status FROM ReadingStatus';
+    db.pool.query(sql, (error, rows, fields) => {
+        if (error) throw error;
+        res.send([rows, fields]);
+    });
+});
+
+
+// RETRIEVE
+app.get('/retrieve-readinglogs', (req, res) => {
+    let sql = 'SELECT logID, Readers.name AS name, Books.title AS title, ReadingClubs.clubName AS clubName, ReadingStatus.status AS status \
+    FROM ReadingLogs \
+    LEFT OUTER JOIN Readers ON ReadingLogs.readerID = Readers.readerID \
+    LEFT OUTER JOIN Books ON ReadingLogs.bookID = Books.bookID \
+    LEFT OUTER JOIN ReadingClubs ON ReadingLogs.readingClubID = ReadingClubs.clubID \
+    LEFT OUTER JOIN ReadingStatus ON ReadingLogs.statusID = ReadingStatus.statusID;';
+    db.pool.query(sql, (error, rows, fields) => {
+        if (error) throw error;
+        res.send([rows, fields]);
+    });
+});
+
+
 /* operations for: ClubMembers entity */
+// CREATE
+app.post('/add-clubmembers', (req, res) => {
+    let data = req.body;
+    let sql = `INSERT INTO ClubMembers (readerID, clubID) VALUES ('${data.readerID}', '${data.readingClubID}')`;
+    db.pool.query(sql, (error, rows, field) => {
+	if (error) {
+	    console.log(error);
+	    res.sendStatus(400);
+	} else {
+	    res.sendStatus(200);
+	}});
+});
+
+// RETRIEVE
+app.get('/retrieve-clubmembers', (req, res) => {
+    let sql = 'SELECT clubMemberID, Readers.name AS name, ReadingClubs.clubName as clubName \
+    FROM ClubMembers \
+    LEFT OUTER JOIN Readers ON ClubMembers.readerID = Readers.readerID \
+    LEFT OUTER JOIN ReadingClubs on ClubMembers.clubID = ReadingClubs.clubID;';
+    db.pool.query(sql, (error, rows, fields) => {
+        if (error) throw error;
+        res.send([rows, fields]);
+    });
+});
+
+// DELETE
+app.delete('/delete-clubmembers', (req, res) => {
+    let data = req.body;
+    let dataID = parseInt(data.id);
+    let sql = `DELETE FROM ClubMembers WHERE clubMemberID = ${dataID};`;
+    db.pool.query(sql, (error, rows, fields) => {
+	    if (error) {
+	        console.log(error);
+	        res.sendStatus(400);
+	    } else {
+            res.sendStatus(204);
+        }});
+});
 
 /* operations for: ReadingStatus entity */
 // CREATE
